@@ -15,7 +15,9 @@
 
     module.exports = function (callback, title) { // The title is optional and is only present when searching. (You need yo modify the books.js file first)
           /*added 30/1*/
-          callback(console.log(JSON.stringify(listOfBooks)));
+          //callback(console.log(JSON.stringify(listOfBooks)));
+          /*added 31/1*/
+          callback(JSON.stringify(listOfBooks));
     };
 
 }());
