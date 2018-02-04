@@ -1,4 +1,4 @@
-/*added 30/1*/
+/*added 30/1 subtask a*/
 "use strict";
 module.exports = function (id, title, author, genre, publishDate, price, description) {
 
