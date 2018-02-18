@@ -5,7 +5,7 @@
     var LibraryDAO = require('../dao/LibraryDAO');
     var Book = require('../dao/Book');
 
-    /*Creating a empty array, added 30/1 subtask a*/
+    /*Creating an empty array, added 30/1 subtask a*/
     var listOfBooks = [];
 
     /*Adding some books, added 30/1 subtask a*/
@@ -18,10 +18,14 @@
           //console.log(listOfBooks);
 
           /*added 31/1 subtask b*/
-          //console.log(JSON.stringify(listOfBooks)));
+          //console.log(JSON.stringify(listOfBooks));
 
           /*added 31/1 subtask c*/
-          callback(JSON.stringify(listOfBooks));
+          //callback(JSON.stringify(listOfBooks));
+
+          /*added 18/2 Task2 design fetch books*/
+          //callback(console.log(new LibraryDAO.readXMLFile()));
+          callback(new LibraryDAO.readXMLFile());
     };
 
 }());
