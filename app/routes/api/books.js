@@ -16,6 +16,8 @@
         res.type('json');
 
         GetBooksResource(function (data) {
+            //console.log("inne i books.js");
+            //console.log(data);
             res.send(data);
         });
     });
