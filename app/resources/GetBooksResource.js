@@ -25,19 +25,11 @@
           //callback(JSON.stringify(listOfBooks));
 
           /*Theme 2 Task 3 list books*/
-          LibraryDAO.readXMLFile(callback),(err,data) => {
-              if(err){
-                console.log("error");
-              }
-              else {
-
-                console.log(data);
-
-              }
-
-            }
+          LibraryDAO.readXMLFile(callback);
 
     };
+
+
 
 
 }());

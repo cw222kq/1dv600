@@ -38,7 +38,7 @@
 
         // Write the entire file from the file system.
         writeXMLFile: function(data) {
-
+            
         }
     };
 
