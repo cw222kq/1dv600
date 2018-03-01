@@ -13,6 +13,10 @@
     listOfBooks.push(new Book(2,"Cujo","Stephen King", "horror",810202, 75,"It is a 1981 psychological horror novel about a rabid dog..."));
     listOfBooks.push(new Book(3,"Harry Potter and the Philosopher's Stone","J.K Rowling", "fantasy", 970303, 80," It is the first novel in the Harry Potter series.."));
 
+    //Test att skriva ut array med böcker
+  /*  console.log("testar att skriva ut en array med böcker");
+    LibaryDAO.writeXMLFile();*/
+
     module.exports = function (callback, title) { // The title is optional and is only present when searching. (You need yo modify the books.js file first)
 
           /*added 30/1 subtask a*/
@@ -26,6 +30,8 @@
 
           /*Theme 2 Task 3 list books*/
           LibraryDAO.readXMLFile(callback);
+
+
 
     };
 
