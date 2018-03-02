@@ -1,6 +1,7 @@
 
 (function () {
     "use strict";
+    let books = [];
 
     var fs = require('fs');
 
@@ -9,6 +10,7 @@
     var xml2js = require('xml2js');
     var parseString = require('xml2js').parseString;
     var Book = require('../dao/Book');
+    var builder = new xml2js.Builder();
 
     // Use this file to write and read the xml file.
     var LibraryDAO = {
@@ -19,31 +21,40 @@
           /* Försök med callbacks*/
           fs.readFile("books.xml",(err,data) => {
                 if(err){
-                  console.log(err);
+                console.log(err);
                 }
                 else{
                   let arr = [];
-                  let books = [];
+                //  let books = [];
                   //convert the data to javascript
                   parseString(data,(err, file) => {
 
                         console.log("This should print");
-                        //changing the file to the correct format for the browser
+
+                        console.log("så här ska den se ut*********");
+                        console.log(file);
+                        console.log("längden av file är: " + file.length);
+
+
+                        //add the objects from the file to an array
                         file.catalog.book.forEach((element) =>{
                             arr.push(element);
+
                         });
+                        console.log("såhär ska den se ut!!!!!!!!!!!!!!!11");
+                        console.log(arr);
+                        console.log("längden av arr är: " + arr.length);
 
                         for(let i = 0; i< arr.length; i++){
-                          books.push(new Book(arr[i].$.id, arr[i].author, arr[i].title, arr[i].genre, arr[i].price, arr[i].publish_date, arr[i].description))
+                          books.push(new Book(String(arr[i].$.id), arr[i].author, arr[i].title, arr[i].genre, arr[i].price, arr[i].publish_date, arr[i].description))
                         }
-                      
+
                         return callback(JSON.stringify(books));
                   });
 
                 }
 
               });
-
 
       }, //end of readXMLFile
 
@@ -55,30 +66,60 @@
         // Write the entire file from the file system.
         writeXMLFile: function(data) {
 
+          let counter = 1;
 
+          let modifiedBooks = [];
 
-          let arr = [];
+          for(let i = 0; i< books.length; i++){
 
-      /*    fs.readFile("books.xml",(err,file) => {
-                if(err){
-                  console.log(err);
-                }
-                else{
-                  file.forEach((book) => {
-                      arr.push(catalog.book);
-                  });
+              if(books[i].id != data){
+                  modifiedBooks.push(books[i]);
+              }
+          }
+          for(let i = 0; i<modifiedBooks.length; i++){
 
-                  console.log(arr);
-                  //return file;
-                }
+              modifiedBooks[i].id = counter;
+              counter++;
+          }
 
+          let tempArr = [];
+        /*  console.log("modifiedBooks");
+          console.log(modifiedBooks);*/
 
-          }); */
+          for(let i = 0; i < modifiedBooks.length; i++){
 
-          /*  fs.writeFile("books.xml", data, function (err) {
-              if (err) throw err;
-              console.log('Saved!');
-            });*/
+              tempArr[i] = ({$:{id:String(modifiedBooks[i].id)}, author:modifiedBooks[i].author, title:modifiedBooks[i].title, genre:modifiedBooks[i].genre, price:modifiedBooks[i].price, publish_date:modifiedBooks[i].publish_date, description:modifiedBooks[i].description});
+
+          }
+          //let book = {tempArr};
+          let catalog = {book:tempArr};
+          console.log("catalog");
+          console.log(catalog);
+          let shell = {catalog};
+          console.log("shell");
+          console.log(shell);
+
+          /*console.log("ny array med endast $!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+          console.log(tempArr);*/
+
+          /*funkar
+          //från js obj till xml
+          var obj = {name: "Super", Surname: "Man", age: 23};
+          console.log("from js to xml");
+
+          let xmlObj = builder.buildObject(obj);
+          console.log(xmlObj);
+
+          //från xml till js
+          console.log("from xml to js");
+          parseString(xmlObj, (err,res) =>{
+            if(err){
+                console.log(err);
+            }
+            else {
+                console.log(res);
+            }
+          }); //slut parseString */
 
         }
     };
