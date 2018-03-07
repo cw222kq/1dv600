@@ -8,6 +8,7 @@ describe("Simple addition", function () {
         it("describe..", function () {
             var a = 2;
             var b = 4;
+            console.log("inne i add AddSimpleFunction");
 
             var result = AddSimpleFunction.add(2,4);
 
