@@ -99,6 +99,13 @@
 
           });
 
+        }, //end of writeXMLFile
+        //update the file in the file system.
+        appendXMLFile: function(data){
+
+          
+
+
         }
     };
 
