@@ -4,7 +4,7 @@ var expect    = require("chai").expect;
 var LibraryDAO = require('../app/dao/LibraryDAO');
 var AddSimpleFunction = require("../app/AddSimpleFunction");
 //Task 3 Unit tests, testing the delete book function
-describe("Delete book pre", function () {
+/*describe("Delete book pre", function () {
 
     describe("Testing the length of the list of books before deleting a book", function () {
 
@@ -62,7 +62,7 @@ describe("Tests delete book", function () {
       it("The book is added to the list of books. Testing the length of the array. Should return 10", function (done) {
 
         let bookObj = {author:"Stephen King", title:"IT", genre:"horror", price:90, publish_date:"1986-01-01", description:"It is a 1986 horror novel by American author Stephen King..."};
-        LibraryDAO.appendXMLFile(bookObj,(respond,reject) =>{
+        LibraryDAO.writeXMLFile(bookObj,(respond,reject) =>{
 
             done();
         });

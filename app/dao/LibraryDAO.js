@@ -59,19 +59,37 @@
           //counter used to update the id:s of the books
           let counter = 1;
           let modifiedBooks = [];
-          //pushing all the books we want to save into a new array
-          for(let i = 0; i< books.length; i++){
+          //pushing all the books we want to save into a new array if the input data == id
+          console.log("typen av data är: ");
+          console.log(typeof(data));
+          if(typeof(data) === 'string'){
+            for(let i = 0; i< books.length; i++){
 
-              if(books[i].id != data){
-                  modifiedBooks.push(books[i]);
-              }
-          }
-          //updating the id numbers of the books
-          for(let i = 0; i<modifiedBooks.length; i++){
+                if(books[i].id != data){
+                    modifiedBooks.push(books[i]);
+                }
+            }
+            //updating the id numbers of the books
+            for(let i = 0; i<modifiedBooks.length; i++){
 
-              modifiedBooks[i].id = counter;
-              counter++;
+                modifiedBooks[i].id = counter;
+                counter++;
+            }
           }
+          else{
+
+            console.log("data is a object");
+            //pushing all the books into a new array
+            for(let i = 0; i< books.length; i++){
+
+                modifiedBooks.push(books[i]);
+            }
+            //taking in the object data and add it to an object
+            let dataObj = {id:books.length+1, author: data.author, title: data.title, genre: data.genre, price:data.price, publish_date:data.publish_date, description:data.description};
+            //pushing the new object in the arrayen
+            modifiedBooks.push(dataObj);
+          }
+
           let tempArr = [];
 
           for(let i = 0; i < modifiedBooks.length; i++){
@@ -103,7 +121,7 @@
         //update the file in the file system.
         appendXMLFile: function(data){
 
-          
+
 
 
         }
