@@ -16,14 +16,17 @@
     var LibraryDAO = {
 
         // Get the entire file from the file system.
-        readXMLFile: function(callback) {
+        readXMLFile: function(callback,file) {
+
+          console.log("the file");
+          console.log(file);
 
           console.log("i LibraryDAO readXMLFile" );
 
           //empties the books array
           books = [];
           /*added 18/2 Task2 design fetch books, solved with inspiration from: https://github.com/Leonidas-from-XIV/node-xml2js*/
-          fs.readFile("books.xml",(err,data) => {
+          fs.readFile(file,(err,data) => {
                 if(err){
                 console.log(err);
                 }
@@ -53,7 +56,7 @@
 
         }, //end of readXMLFile
       // Write the entire file from the file system.
-        writeXMLFile: function(data) {
+        writeXMLFile: function(data,file) {
 
           console.log("i LibraryDAO writeXMLFile" );
           //counter used to update the id:s of the books
@@ -109,7 +112,7 @@
           let xmlObj = builder.buildObject(shell);
 
           //saving the book objects (in xml) to the book.xml file. i.e. replacing the old data with the new
-          fs.writeFile("books.xml", xmlObj,(err, res) => {
+          fs.writeFile(file, xmlObj,(err, res) => {
             if (err) {
               console.log(err);
             }

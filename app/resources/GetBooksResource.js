@@ -27,7 +27,7 @@
 
           /*Theme 2 Task 3 list books*/
           console.log("I get GetBooksResource");
-          LibraryDAO.readXMLFile(callback);
+          LibraryDAO.readXMLFile(callback,"books.xml");
 
     };
 

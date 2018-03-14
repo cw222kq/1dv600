@@ -7,7 +7,7 @@
     module.exports = function (id, callback) {
 
       /*Theme 2 Task 3 delete books*/
-      callback(LibraryDAO.writeXMLFile(id));
+      callback(LibraryDAO.writeXMLFile(id,"books.xml"));
 
     };
 

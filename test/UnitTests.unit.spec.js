@@ -2,9 +2,9 @@
 
 var expect    = require("chai").expect;
 var LibraryDAO = require('../app/dao/LibraryDAO');
-var AddSimpleFunction = require("../app/AddSimpleFunction");
-//Task 3 Unit tests, testing the delete book function
-/*describe("Delete book pre", function () {
+
+//Task 3 Unit tests, testing the length of the array before deleting a book **one test case**
+describe("Delete book pre", function () {
 
     describe("Testing the length of the list of books before deleting a book", function () {
 
@@ -14,17 +14,17 @@ var AddSimpleFunction = require("../app/AddSimpleFunction");
 
             let result = [];
             result = JSON.parse(resolve);
-
-            expect(result).to.have.length(10);
             done();
+            expect(result).to.have.length(10);
 
-            });
+
+            },"booksTestfileDeleteBooks.xml");
 
         });
 
     });
 
-});
+}); //delting book no 10 **two test case**
 describe("Tests delete book", function () {
     describe("Deleting a book", function () {
         it("The book is removed", function (done) {
@@ -34,56 +34,64 @@ describe("Tests delete book", function () {
             let result = [];
             result = JSON.parse(resolve);
             done();
-            LibraryDAO.writeXMLFile(10);
+            LibraryDAO.writeXMLFile('10',"booksTestfileDeleteBooks.xml");
 
-          });
-          describe("Testing the length of the list of books after deleting a book", function () {
-            it("The result that should be returned is 9.", function (done) {
+          },"booksTestfileDeleteBooks.xml");
+          //testing the length of the array after deleting the book
+            describe("Testing the length of the list of books after deleting a book", function () {
+              it("The result that should be returned is 9.", function (done) {
 
-              LibraryDAO.readXMLFile((res,reject) =>{
+                LibraryDAO.readXMLFile((res,reject) =>{
 
-                let result = [];
-                result = JSON.parse(res);
-                expect(result).to.have.length(9);
-                done();
+                  let result = [];
+                  result = JSON.parse(res);
+                  done();
+                  expect(result).to.have.length(9);
+
+                },"booksTestfileDeleteBooks.xml");
 
               });
 
           });
 
         });
+      });
 
-    });
-  });
 });
 //Task 3 Unit tests, testing the add book method that is not complete yet. The test should fail
-/*describe("Tests add book", function () {
+describe("Tests add book", function () {
     describe("Adding a book", function () {
-      it("The book is added to the list of books. Testing the length of the array. Should return 10", function (done) {
+      it("The book is added to the list of books. Testing the length of the array. Should return 11", function (done) {
 
-        let bookObj = {author:"Stephen King", title:"IT", genre:"horror", price:90, publish_date:"1986-01-01", description:"It is a 1986 horror novel by American author Stephen King..."};
-        LibraryDAO.writeXMLFile(bookObj,(respond,reject) =>{
+        LibraryDAO.readXMLFile((resolve,reject) =>{
 
-            done();
-        });
-        describe("Testing the length of the list of books after adding a book", function () {
-          it("The result that should be returned is 10.", function (done) {
+          let result = [];
+          result = JSON.parse(resolve);
+          done();
+          let bookObj = {author:"Stephen King", title:"IT", genre:"horror", price:90, publish_date:"1986-01-01", description:"It is a 1986 horror novel by American author Stephen King..."};
+          LibraryDAO.writeXMLFile(bookObj,"booksTestfileAddBooks.xml");
 
-            LibraryDAO.readXMLFile((res,reject) =>{
+        },"booksTestfileAddBooks.xml");
+        //testing the length of the array after adding the book
+          describe("Testing the length of the list of books after adding a book", function () {
+            it("The result that should be returned is 11.", function (done) {
 
-              let result = [];
-              result = JSON.parse(res);
-              expect(result).to.have.length(10);
-              done();
+              LibraryDAO.readXMLFile((res,reject) =>{
+
+                let result = [];
+                result = JSON.parse(res);
+                done();
+                expect(result).to.have.length(11);
+
+              },"booksTestfileAddBooks.xml");
 
             });
 
-        });
 
-      });
+        });
 
     });
 
   });
 
-});*/
+});

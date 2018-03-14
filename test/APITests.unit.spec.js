@@ -5,7 +5,7 @@ var request = require('supertest');
 var app = require("../app");
 
 describe("Testing GetBooksResource respond, first test", function () {
-
+  
     describe("GET /api/books", function () {
 
         it("Should resturn 200 status code", function (done) {
@@ -33,7 +33,7 @@ describe("Testing GetBooksResource respond, second test", function () {
                 .get('/api/books')
                 .expect('Content-Type', /json/)
                 .end((err, res) =>{
-                  console.log("err is", err); 
+                  console.log("err is", err);
                   if(err) throw new Error(err);
                   done();
                 });
