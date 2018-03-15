@@ -5,9 +5,9 @@ var request = require('supertest');
 var app = require("../app");
 
 describe("Testing GetBooksResource respond, first test", function () {
-  
-    describe("GET /api/books", function () {
 
+    describe("GET /api/books", function () {
+      this.timeout(3000);
         it("Should resturn 200 status code", function (done) {
 
             request(app)

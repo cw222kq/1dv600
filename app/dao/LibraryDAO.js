@@ -122,10 +122,41 @@
 
         }, //end of writeXMLFile
         //update the file in the file system.
-        appendXMLFile: function(data){
+        editXMLFile: function(id,data,file){
+
+          console.log("id");
+          console.log(id);
+          console.log("data");
+          console.log(data);
+
+          books[id-1] = {author:data.author, title:data.title, genre:data.genre, price:data.price, publish_date:data.publish_date, description:data.description};
+
+          let tempArr = [];
+
+          for(let i = 0; i < books.length; i++){
+
+              tempArr[i] = ({$:{id:String(books[i].id)}, author:books[i].author, title:books[i].title, genre:books[i].genre, price:books[i].price, publish_date:books[i].publish_date, description:books[i].description});
+
+          }
+
+          //changing the book objects to in the same foramat as the book objects in books.xml. To be able to convert the objects to xml later on
+          let catalog = {book:tempArr};
+          let shell = {catalog};
 
 
 
+          //converting the book objects to xml
+          let xmlObj = builder.buildObject(shell);
+
+
+
+          fs.writeFile(file, xmlObj,(err, res) => {
+            if (err) {
+              console.log(err);
+            }
+            console.log('Saved!');
+
+          });
 
         }
     };

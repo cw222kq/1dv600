@@ -6,6 +6,8 @@
 
     module.exports = function (id, data, callback) {
 
+      LibraryDAO.editXMLFile(id,data,"books.xml");
+
     };
 
 }());
