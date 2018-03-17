@@ -4,7 +4,7 @@ var expect    = require("chai").expect;
 var LibraryDAO = require('../app/dao/LibraryDAO');
 
 //Task 3 Unit tests, testing the length of the array before deleting a book **one test case**
-/*describe("Delete book pre", function () {
+describe("Delete book pre", function () {
 
     describe("Testing the length of the list of books before deleting a book", function () {
 
@@ -94,9 +94,9 @@ describe("Tests add book", function () {
 
   });
 
-}); */
-//Task 3 in assignment 4, Unit tests, testing the edit a book method, forts ***********************
-/*describe("Tests edit a book", function () {
+});
+//Task 3 in assignment 4, Unit tests, testing the edit a book method
+describe("Tests edit a book", function () {
     describe("pre Editing a book", function () {
       it("The book with id 9 (index 8) has no description. Geting the length of the description for book 9 should return 1 (empty string)", function (done) {
 
@@ -105,17 +105,13 @@ describe("Tests add book", function () {
           let result = [];
           result = JSON.parse(resolve);
 
-          console.log("book 9 beskrivning");
-          console.log(result[8]);
-          console.log(result[8].description);
-
           expect(result[8].description).with.lengthOf(1);
 
           done();
 
-          let bookObj = {author:"Napoleon Hill", title:"Think and Grow Rich", genre:"Personal Development", price:124, publish_date:"1937-11-12", description:"This book is about..."};
+          let bookObj = {author:"Napoleon Hill", title:"Think and Grow Rich", genre:"Personal Development", price:124, publish_date:"1937-12-12", description:"This book is about..."};
 
-          LibraryDAO.writeXMLFile(8,bookObj,"booksTestfileEditBooks.xml");
+          LibraryDAO.editXMLFile(9,bookObj,"booksTestfileEditBooks.xml");
 
         },"booksTestfileEditBooks.xml");
         //testing the length of the description after editing the book should be above 1
@@ -126,8 +122,9 @@ describe("Tests add book", function () {
 
                 let result = [];
                 result = JSON.parse(res);
-                expect(result[8].description).with.lengthOf(21);
+
                 done();
+                expect(result[8].description).with.lengthOf(21);
 
               },"booksTestfileEditBooks.xml");
 
@@ -140,4 +137,4 @@ describe("Tests add book", function () {
 
   });
 
-});*/
+});

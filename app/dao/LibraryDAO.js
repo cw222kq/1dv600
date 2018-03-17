@@ -124,12 +124,7 @@
         //update the file in the file system.
         editXMLFile: function(id,data,file){
 
-          console.log("id");
-          console.log(id);
-          console.log("data");
-          console.log(data);
-
-          books[id-1] = {author:data.author, title:data.title, genre:data.genre, price:data.price, publish_date:data.publish_date, description:data.description};
+          books[id-1] = {id:id, author:data.author, title:data.title, genre:data.genre, price:data.price, publish_date:data.publish_date, description:data.description};
 
           let tempArr = [];
 
