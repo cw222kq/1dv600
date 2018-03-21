@@ -24,7 +24,8 @@ describe("Delete book pre", function () {
 
     });
 
-}); //delting book no 10 **two test case**
+});
+//delting book no 10 **two test case**
 describe("Tests delete book", function () {
     describe("Deleting a book", function () {
         it("The book is removed", function (done) {
@@ -61,12 +62,13 @@ describe("Tests delete book", function () {
 //Task 3 Unit tests, testing the add book method
 describe("Tests add book", function () {
     describe("Adding a book", function () {
-      it("The book is added to the list of books. Testing the length of the array. Should return 11", function (done) {
+      it("The book is added to the list of books. Testing the length of the array. Before adding. The result 10 should be returned", function (done) {
 
         LibraryDAO.readXMLFile((resolve,reject) =>{
 
           let result = [];
           result = JSON.parse(resolve);
+          expect(result).to.have.length(10);
           done();
           let bookObj = {author:"Stephen King", title:"IT", genre:"horror", price:90, publish_date:"1986-01-01", description:"It is a 1986 horror novel by American author Stephen King..."};
           LibraryDAO.writeXMLFile(bookObj,"booksTestfileAddBooks.xml");

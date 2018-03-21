@@ -70,7 +70,7 @@
     <genre>Personal Development</genre>
     <price>124</price>
     <publish_date/>
-    <description>this is a book</description>
+    <description/>
   </book>
   <book id="10">
     <author>Stephen Hawking</author>
